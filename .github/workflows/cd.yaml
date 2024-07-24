@@ -33,6 +33,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            docker rm -f website | true
+            docker rm -f website &2>/dev/null | true
             docker images --format '{{.Repository}}:{{.Tag}}' | grep 'nghiatran0502/crawler-website' | xargs -r docker rmi
-            docker run --net crawler --name website -p 3100:80 nghiatran0502/crawler-website:2024-07-24
+            docker run --net crawler -d --name website -p 3100:80 nghiatran0502/crawler-website:2024-07-24
+          # continue-on-error: true
