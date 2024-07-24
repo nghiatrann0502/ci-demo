@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout
+        uses: actions/checkout@v4
 
       - name: Tags docker image
         id: meta
